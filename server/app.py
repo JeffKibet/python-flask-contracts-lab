@@ -9,7 +9,6 @@ app = Flask(__name__)
 
 @app.route('/contract/<int:id>')
 def get_contract(id):
-    # Look for a contract matching the given id
     for contract in contracts:
         if contract["id"] == id:
             return contract["contract_information"], 200
@@ -18,7 +17,6 @@ def get_contract(id):
 
 @app.route('/customer/<customer_name>')
 def get_customer(customer_name):
-    # Confirm the customer exists without exposing any sensitive data
     if customer_name in customers:
         return make_response('', 204)
     return make_response("Customer not found", 404)
